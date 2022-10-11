@@ -6,14 +6,15 @@ import java.util.Scanner;
 
 public class Lms {	// Learning Management System
 
-	String name;
+	private String name;
 	
 	Scanner scan = new Scanner(System.in);
 	Random ran = new Random();
+	FileManager fm = new FileManager("students.txt");
 	private ArrayList<Student> list = new ArrayList<>();
-	String[] subjectTitles = {"국어", "영어", "수학"};
-	int stuCnt;
-	int subCnt = subjectTitles.length;
+	private String[] subjectTitles = {"국어", "영어", "수학"};
+	private int stuCnt;
+	private int subCnt = subjectTitles.length;
 	
 	Lms(String name) {
 		this.name = name;
@@ -56,11 +57,12 @@ public class Lms {	// Learning Management System
 		return idx;
 	}
 	
-	int getSubject(String title) {
+	int getSubject(int stuIdx, String title) {
 		int idx = -1;
-		
-		for(int i=0;i<subCnt;i++) {
-			if(subjectTitles[i].equals(title))
+		Student student = list.get(stuIdx);
+		for(int i=0;i<student.getSubCnt();i++) {
+			Subject subject = student.getSubjects().get(i);
+			if(subject.getTitle().equals(title))
 				idx = i;
 		}
 		
@@ -109,12 +111,16 @@ public class Lms {	// Learning Management System
 		System.out.println("학번 입력 : ");
 		int num = scan.nextInt();
 		int idx = getStudent(num);
+		int idx2 = 0;
 		String title = "";
 		if(idx!=-1) {
 			printAllSubject();
 			System.out.print("수강할 과목 : ");
 			title = scan.next();
-			int idx2 = getSubject(title);
+			for(int i=0;i<subCnt;i++) {
+				if(subjectTitles[i].equals(title))
+					idx2 = i;
+			}
 			
 			if(idx2!=-1) {
 				Subject subject = new Subject(title);
@@ -138,13 +144,14 @@ public class Lms {	// Learning Management System
 			printAllSubject();
 			System.out.print("과목명 : ");
 			title = scan.next();
-			
-			if(getSubject(title)!=-1) {
+			int idx2 = getSubject(idx, title);
+			if(idx2!=-1) {
 				System.out.print("점수 입력 : ");
 				int score = scan.nextInt();
-				Student student = this.list.get(idx);
-				Subject subject = new Subject(title, score);
-				student.setSubjects(idx, subject);
+				
+				if(score>=0 && score<=100) {
+					list.get(idx).getSubjects().get(idx2).setScore(score);
+				}
 			}else {
 				System.out.println("해당 과목을 찾지 못했습니다.");
 			}
@@ -182,9 +189,32 @@ public class Lms {	// Learning Management System
 	void delStudent() {
 		System.out.print("학번 입력 : ");
 		int num = scan.nextInt();
-		
-		if(getStudent(num)!=-1) {
-			
+		int idx = getStudent(num);
+		if(idx!=-1) {
+			list.remove(idx);
+			stuCnt--;
+		}else {
+			System.out.println("해당 학생을 찾지 못했습니다.");
+		}
+	}
+	
+	void delSubject() {
+		System.out.print("학번 입력 : ");
+		int num = scan.nextInt();
+		int idx = getStudent(num);
+		if(idx!=-1) {
+			System.out.print("취소할 과목명 : ");
+			String title = scan.next();
+			Student student = this.list.get(idx);
+			for(int i=0;i<student.getSubCnt();i++) {
+				Subject subject = student.getSubjects().get(i);
+				if(title.equals(subject.getTitle())) {
+					student.getSubjects().remove(i);
+					student.setSubCnt(student.getSubCnt()-1);
+				}
+			}
+		}else {
+			System.out.println("해당 학생을 찾지 못했습니다.");
 		}
 	}
 	
@@ -195,12 +225,41 @@ public class Lms {	// Learning Management System
 			if(sel==1) {
 				delStudent();
 			}else if(sel==2) {
-//				delSubject();
+				delSubject();
 			}else if(sel==0) {
 				break;
 			}
 		}
 	}
+	
+	void sortName() {
+		for(int i=stuCnt-1;i>0;i--) {
+			for(int j=0;j<i;j++) {
+				if(list.get(j).getName().compareTo(list.get(j+1).getName())>0) {	// 이름순 오름차순 정렬
+					Student temp = list.get(j);
+					list.set(j, list.get(j+1));
+					list.set(j+1, temp);
+				}
+			}
+		}
+	}
+	
+	void printAll() {
+		for(int i=0;i<stuCnt;i++) {
+			Student student = list.get(i);
+			System.out.printf("%s(%d) : ", student.getName(), student.getNumber());
+			for(int j=0;j<student.getSubCnt();j++) {
+				Subject subject = student.getSubjects().get(j);
+				String title = subject.getTitle();
+				int score = subject.getScore();
+				System.out.printf("%s(%d)", title, score);
+				if(j<student.getSubCnt()-1)
+					System.out.print(", ");
+			}
+			System.out.println();
+		}
+	}
+	
 	
 	void run() {
 		while(true) {
@@ -211,13 +270,14 @@ public class Lms {	// Learning Management System
 			}else if(sel==2) {
 				delSubMenu();
 			}else if(sel==3) {
-//				sortName();
+				sortName();
 			}else if(sel==4) {
-//				printAll();
+				printAll();
 			}else if(sel==5) {
-//				fileManager.save();
+				fm.saveData(list);
 			}else if(sel==6) {
-//				fileManager.load();
+				this.list = fm.loadData();
+				stuCnt = list.size();
 			}else if(sel==0) {
 				break;
 			}

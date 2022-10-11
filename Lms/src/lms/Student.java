@@ -44,5 +44,8 @@ public class Student {
 		this.subjects.set(idx, subjects);
 	}
 	
+	public void addSubjects(Subject subjects) {
+		this.subjects.add(subjects);
+	}
 	// 그 외 기능 메소드는 용도에 맞게 public 또는 private로 처리
 }
