@@ -10,10 +10,10 @@ public class DBManager {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection(url, id, pw);
-			System.out.println("DBì—°ë™ ì„±ê³µ");
+			System.out.println("DB¿¬µ¿ ¼º°ø");
 		}catch(Exception e) {
 			e.printStackTrace();
-			System.out.println("DBì—°ë™ ì‹¤íŒ¨");
+			System.out.println("DB¿¬µ¿ ½ÇÆĞ");
 		}
 		return conn;
 	}

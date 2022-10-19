@@ -12,16 +12,17 @@
 </head>
 <body>
 <%
+MemberDao memberDao = MemberDao.getInstance();
+
 request.setCharacterEncoding("UTF-8");
 int custno = Integer.parseInt(request.getParameter("custno"));
 String custname = request.getParameter("custname");
 String phone = request.getParameter("phone");
 String address = request.getParameter("address");
-String data = request.getParameter("joindate");
+Timestamp joindate = memberDao.getTimestamp(request.getParameter("joindate"));
 String grade = request.getParameter("grade");
 String city = request.getParameter("city");
 
-MemberDao memberDao = MemberDao.getInstance();
 MemberDto member = memberDao.getMember(custno);
 if(custname != null)
 	member.setCustname(custname);
@@ -29,15 +30,8 @@ if(phone != null)
 	member.setPhone(phone);
 if(address != null)
 	member.setAddress(address);
-if(data != null){
-	String[] temp = data.split("-");
-	int year = Integer.parseInt(temp[0]);
-	int month = Integer.parseInt(temp[1]);
-	int day = Integer.parseInt(temp[2]);
-	Date date = new Date(year-1900, month, day);
-	Timestamp joindate = new Timestamp(date.getTime());
+if(joindate != null)
 	member.setJoindate(joindate);
-}
 if(grade != null)
 	member.setGrade(grade);
 if(city != null)

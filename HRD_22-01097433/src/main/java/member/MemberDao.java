@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.sql.Date;
 
 import util.DBManager;
 
@@ -21,7 +22,7 @@ public class MemberDao {
 	
 	// Singleton pattern
 	private MemberDao() {
-		this.url = "jdbc:oracle:thin:@DESKTOP-8U20BN7:1521:xe";
+		this.url = "jdbc:oracle:thin:@localhost:1521:xe";
 		this.user = "c##system";
 		this.password = "1234";
 	}
@@ -32,6 +33,21 @@ public class MemberDao {
 		return instance;
 	}
 	
+	public Timestamp getTimestamp(String date) {
+		String[] data = date.split("-");
+		int year = Integer.parseInt(data[0])-1900;
+		int month = Integer.parseInt(data[1]);
+		int day = Integer.parseInt(data[2]);
+		
+		Date info = new Date(year, month, day);
+		Timestamp timestamp = new Timestamp(info.getTime());
+		return timestamp;
+	}
+	
+	public String getJoindate(Timestamp date) {
+		String result = date + "";
+		return result.substring(0,10);
+	}
 	
 	// 1.CREATE
 	public int getNewCustno() {
@@ -149,9 +165,9 @@ public class MemberDao {
 			e.printStackTrace();
 		} finally {
 			try {
-				rs.close();
-				pstmt.close();
-				conn.close();
+				this.rs.close();
+				this.pstmt.close();
+				this.conn.close();
 			} catch (SQLException sqle) {
 				sqle.printStackTrace();
 			}

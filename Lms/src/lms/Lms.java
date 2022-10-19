@@ -122,7 +122,7 @@ public class Lms {	// Learning Management System
 					idx2 = i;
 			}
 			
-			if(idx2!=-1) {
+			if(idx2!=-1 && getSubject(idx, title)==-1) {
 				Subject subject = new Subject(title);
 				list.get(idx).getSubjects().add(subject);
 				list.get(idx).setSubCnt(list.get(idx).getSubCnt()+1);
@@ -151,6 +151,8 @@ public class Lms {	// Learning Management System
 				
 				if(score>=0 && score<=100) {
 					list.get(idx).getSubjects().get(idx2).setScore(score);
+				}else {
+					System.out.println("점수 범위를 초과한 값입니다.");
 				}
 			}else {
 				System.out.println("해당 과목을 찾지 못했습니다.");

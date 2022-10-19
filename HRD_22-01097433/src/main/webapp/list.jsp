@@ -39,7 +39,7 @@ ArrayList<MemberDto> memberList = memberDao.getMemberAll();
 					<td><%=member.getCustname()%></td>
 					<td><%=member.getPhone()%></td>
 					<td><%=member.getAddress()%></td>
-					<td><%=member.getJoindate()%></td>
+					<td><%=memberDao.getJoindate(member.getJoindate())%></td>
 					<td><%=member.getGrade()%></td>
 					<td><%=member.getCity()%></td>
 				</tr>
