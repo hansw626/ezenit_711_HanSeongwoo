@@ -7,7 +7,7 @@ import unit.Hero;
 
 public class Guild {
 
-	private static int money;
+	private int money;
 	private ArrayList<Hero> heros;
 	private ArrayList<Item> items;
 	
@@ -16,8 +16,9 @@ public class Guild {
 		heros = new ArrayList<>();
 		items = new ArrayList<>();
 	}
+	
 
-	public static int getMoney() {
+	public int getMoney() {
 		return money;
 	}
 
@@ -25,5 +26,11 @@ public class Guild {
 		this.money = money;
 	}
 	
+	public void addHero(Hero hero) {
+		heros.add(hero);
+	}
 	
+	public void addItem(Item item) {
+		items.add(item);
+	}
 }
