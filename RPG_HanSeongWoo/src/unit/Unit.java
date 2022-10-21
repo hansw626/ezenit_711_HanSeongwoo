@@ -1,35 +1,30 @@
 package unit;
 
-// Monster 와 Hero의 공통분모
-public abstract class Unit {
-	
+public class Unit {
+
 	public final String NAME;
 	
-	private int level;
-	private int max_hp;
-	private int hp;		// 체력
-	private int att;	// 공격력
-	private int magic;	// 마법공격력
-	private int def;	// 방어력
-	private int dex;	// 민첩 (치명타 확률, 회피율)
+	private int maxHp;
+	private int hp;
+	private int att;
+	private int def;
 	
-	public Unit(String name, int hp, int att, int magic, int def) {
+	public Unit(String name, int hp, int att, int def) {
 		this.NAME = name;
-		this.max_hp = hp;
+		this.maxHp = hp;
 		this.hp = hp;
 		this.att = att;
-		this.magic = magic;
 		this.def = def;
 	}
-	
-	public int getLevel() {
-		return level;
+
+	public int getMaxHp() {
+		return maxHp;
 	}
 
-	public void setLevel(int level) {
-		this.level = level;
+	public void setMaxHp(int maxHp) {
+		this.maxHp = maxHp;
 	}
-	
+
 	public int getHp() {
 		return hp;
 	}
@@ -46,14 +41,6 @@ public abstract class Unit {
 		this.att = att;
 	}
 
-	public int getMagic() {
-		return magic;
-	}
-	
-	public void setMagic(int magic) {
-		this.magic = magic;
-	}
-
 	public int getDef() {
 		return def;
 	}
@@ -62,21 +49,9 @@ public abstract class Unit {
 		this.def = def;
 	}
 
-	public int getDex() {
-		return dex;
-	}
-
-	public void setDex(int dex) {
-		this.dex = dex;
-	}
-
 	public String getNAME() {
 		return NAME;
 	}
-
-	public int getMAX_HP() {
-		return max_hp;
-	}
-
-	public abstract void printStatus();
+	
+	
 }

@@ -1,48 +1,78 @@
 package inventory;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
+import game.Game;
+import guild.Guild;
 import item.Item;
 
 public class Inventory {
-	ArrayList<Item> itemList = new ArrayList<>();
-	private Scanner scan;
 
-	public void inventoryMenu() {
-		scan = new Scanner(System.in);
-		while (true) {
-			System.out.println("============ [인벤메뉴] =============");
-			printItemList();
-			System.out.println("[1.착용] [2.판매] [0.뒤로가기]");
-			int sel = scan.nextInt();
-			if (sel == 0)
-				break;
-			if (sel == 1) {
-				equipMenu();
+	private static final int MAX_SIZE = 10;
+	ArrayList<Item> itemList = new ArrayList<>();
+	private Guild guild = Guild.getInstance();
+	
+	private Inventory() {}
+	
+	private static Inventory instance = new Inventory();
+	
+	public static Inventory getInstance() {
+		return instance;
+	}
+	
+	public boolean buyItem(Item item) {
+		boolean add = true;
+		if(itemList.size()<MAX_SIZE) {
+			if(item.getPrice()>guild.getMoney()) {
+				System.out.println("길드 머니가 부족합니다.");
+			}else {				
+				guild.setMoney(guild.getMoney()-item.getPrice());
+				itemList.add(item);
+				System.out.println("장비를 길드 창고에 비치했습니다.");
 			}
-			if (sel == 2) {
-				sellMenu();
+		}else {
+			System.out.println("창고 공간이 부족합니다.");
+			add = false;
+		}
+		
+		return add;
+	}
+	
+	public boolean sellItem(int idx) {
+		boolean sell = true;
+		
+		if(idx<0 || idx>=itemList.size()) {
+			sell = false;
+			System.out.println("판매할 상품이 없습니다.");
+		}else {
+			int money = (int)(itemList.get(idx).getPrice()/3);
+			System.out.print(money + "길드 머니에 판매하시겠습니까? [1:y]");
+			int sel = Game.ran.nextInt();
+			if(sel==1) {
+				guild.setMoney(guild.getMoney() + money);
+				itemList.remove(idx);
+			}else {
+				sell = false;
 			}
+		}
+		
+		return sell;
+	}
+	
+	public void printItemAll() {
+		if(itemList!=null && itemList.size()>0) {
+			for(int i=0;i<itemList.size();i++) {
+				Item item = itemList.get(i);
+				System.out.printf("[%d 번] ");
+				item.getItemInfo();
+			}
+		}else {
+			System.out.println("비어 있습니다.");
 		}
 	}
 	
-	public void equipMenu() {
-		
+	public ArrayList<Item> getItemList(){
+		return itemList;
 	}
 	
-	public void sellMenu() {
-		
-	}
-	
-	public void printItemList() {
-		System.out.println("============ [아이템리스트] ==============");
-		for (int i = 0; i < itemList.size(); i++) {
-			System.out.print("[" + (i + 1) + "번]");
-			System.out.print("[이름 : " + itemList.get(i).name + "]");
-			System.out.print("[능력 : " + itemList.get(i).power + "]");
-			System.out.print("[가격 : " + itemList.get(i).price + "]");
-			System.out.println("");
-		}
-	}
 }
