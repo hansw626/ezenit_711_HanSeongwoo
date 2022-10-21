@@ -7,7 +7,7 @@ import unit.Hero;
 
 public class Guild {
 
-	private int money;
+	private static int money;
 	private ArrayList<Hero> heros;
 	private ArrayList<Item> items;
 	
