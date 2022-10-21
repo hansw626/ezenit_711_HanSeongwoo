@@ -5,6 +5,7 @@ public class WoodCutterAx extends Item implements Warrior {
 	@Override
 	public void setItem() {
 		name = "나무꾼의 도끼";
+		className = "WoodCutterAx";
 		kind = WEAPON;
 		hp = 10;
 		att = 3;

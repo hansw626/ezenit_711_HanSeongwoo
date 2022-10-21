@@ -1,5 +1,6 @@
 package hero;
 
+import item.Item;
 import unit.Unit;
 
 public class Hero extends Unit{
@@ -8,9 +9,9 @@ public class Hero extends Unit{
 	private int maxExp;
 	private int exp;
 	
-//	private Item weapon;
-//	private Item armor;
-//	private Item ring;
+	private Item weapon;
+	private Item armor;
+	private Item ring;
 	
 	public Hero(String name, int hp, int att, int def) {
 		super(name, hp, att, def);
@@ -49,6 +50,30 @@ public class Hero extends Unit{
 
 	public void setExp(int exp) {
 		this.exp = exp;
+	}
+
+	public Item getWeapon() {
+		return weapon;
+	}
+
+	public void setWeapon(Item weapon) {
+		this.weapon = weapon;
+	}
+
+	public Item getArmor() {
+		return armor;
+	}
+
+	public void setArmor(Item armor) {
+		this.armor = armor;
+	}
+
+	public Item getRing() {
+		return ring;
+	}
+
+	public void setRing(Item ring) {
+		this.ring = ring;
 	}
 	
 	

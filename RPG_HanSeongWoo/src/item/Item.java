@@ -17,7 +17,8 @@ public abstract class Item {
 	public static final int WEAPON = 1;
 	public static final int ARMOR = 1;
 	public static final int RING = 1;
-	static String name;
+	String name;
+	String className;
 	static int level;
 	static int kind;
 	static int hp;
@@ -28,11 +29,8 @@ public abstract class Item {
 	
 	public abstract void setItem();
 	public abstract void getItemInfo();
-	public static String getName() {
+	public String getName() {
 		return name;
-	}
-	public static void setName(String name) {
-		Item.name = name;
 	}
 	public static int getLevel() {
 		return level;
@@ -67,5 +65,10 @@ public abstract class Item {
 	public void setEquited(boolean b) {
 		this.equited = b;
 	}
+	public String getClassName() {
+		return className;
+	}
+	
+	
 }
 
