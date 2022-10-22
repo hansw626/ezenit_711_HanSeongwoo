@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import game.Game;
 import hero.Hero;
 import inventory.Inventory;
+import item.Item;
 
 public class Guild {
 	
@@ -17,7 +18,7 @@ public class Guild {
 	private Guild() {
 		money = 10000;
 		heroList = new ArrayList<>();
-		heroJobs = new String[]{"Warrior", "Tanker", "Assesin"};
+		heroJobs = new String[]{"Warrior", "Tanker", "Assessin"};
 		inven = Inventory.getInstance();
 	}
 	
@@ -32,27 +33,19 @@ public class Guild {
 		int sel = Game.scan.nextInt();
 		if (money < 5000 || sel!=1)
 			return;
-		String[] n1 = { "박", "이", "김", "최", "유", "지", "오" };
-		String[] n2 = { "명", "기", "종", "민", "재", "석", "광" };
-		String[] n3 = { "수", "자", "민", "수", "석", "민", "철" };
-
-		String name = n1[Game.ran.nextInt(n1.length)];
-		name += n2[Game.ran.nextInt(n1.length)];
-		name += n3[Game.ran.nextInt(n1.length)];
-		int ran = Game.ran.nextInt(8) + 2;
-		int hp = ran * 11;
-		int att = ran + 1;
-		int def = ran / 2 + 1;
 		
-		int rNum = Game.ran.nextInt();
+
+		int level = 1;
+		int rNum = Game.ran.nextInt(heroJobs.length);
 		try {
-			Class<?> clazz = Class.forName(heroJobs[rNum]);
+			Class<?> clazz = Class.forName("hero." + heroJobs[rNum]);
 			Object obj = clazz.newInstance();
-			obj = new Hero(name, hp, att, def);
 			if(obj instanceof Hero) {
 				heroList.add((Hero) obj);
+				((Hero) obj).setLevel(level);
+				((Hero) obj).setStatus();
 				((Hero) obj).getInfo();
-			}
+			}	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -70,10 +63,22 @@ public class Guild {
 	public void printHeroList() {
 		if(heroList!=null) {
 			for(int i=0;i<heroList.size();i++) {
-				Hero hero =  heroList.get(i);
-				System.out.printf("[%d 번] [%s (hp : %d, att : %d, def : %d"
-						, i+1,hero.getHp(), hero.getAtt(), hero.getDef());
+				System.out.printf("[%d번]",i+1);
+				heroList.get(i).getInfo();
 			}
+		}
+	}
+	
+	public void equitedItem(int itemIdx) {
+		printHeroList();
+		System.out.println("착용시킬 영웅의 번호 : ");
+		int idx = Game.scan.nextInt()-1;
+		if(idx>=0 && idx<heroList.size()) {
+			Hero hero = heroList.get(idx);
+			Item item = inven.getItemList().get(itemIdx);
+			hero.equitedItem(item);
+		}else {
+			System.out.println("영웅이 존재하지 않습니다.");
 		}
 	}
 	

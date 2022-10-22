@@ -57,11 +57,26 @@ public class FileManager {
 		}
 		
 		try {
-			fw = new FileWriter(file);
-			fw.write(data);
-			fw.close();
+			this.fw = new FileWriter(this.file);
+			this.fw.write(data);
+			this.fw.close();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void loadData() {
+		try {
+			this.fr = new FileReader(file);
+			this.br = new BufferedReader(fr);
+			
+			while(this.br.ready()) {
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} {
+			
+		} 
 	}
 }

@@ -1,24 +1,15 @@
 package item;
 
-interface Warrior {
-	// mark interface
-}
 
-interface Tanker {
-	// mark interface
-}
-
-interface Assesin {
-	// mark interface
-}
 
 public abstract class Item {
 
 	public static final int WEAPON = 1;
-	public static final int ARMOR = 1;
-	public static final int RING = 1;
+	public static final int ARMOR = 2;
+	public static final int RING = 3;
 	String name;
 	String className;
+	String job;
 	static int level;
 	static int kind;
 	static int hp;

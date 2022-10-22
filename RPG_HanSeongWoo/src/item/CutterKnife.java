@@ -1,15 +1,14 @@
 package item;
 
-public class WoodCutterAx extends Item implements WarriorMark {
+public class CutterKnife extends Item implements AssessinMark {
 	
 	@Override
 	public void setItem() {
-		name = "나무꾼의 도끼";
-		className = "WoodCutterAx";
-		job = "전사";
+		name = "커터칼";
+		className = "CutterKnife";
+		job = "암살자";
 		kind = WEAPON;
-		hp = 10;
-		att = 3;
+		att = 6;
 		equited = false;
 		level = 1;
 		price = 1000;

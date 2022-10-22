@@ -20,50 +20,37 @@ public class Inventory {
 		return instance;
 	}
 	
-	public boolean buyItem(Item item) {
-		boolean add = true;
-		if(itemList.size()<MAX_SIZE) {
-			if(item.getPrice()>guild.getMoney()) {
-				System.out.println("길드 머니가 부족합니다.");
-			}else {				
-				guild.setMoney(guild.getMoney()-item.getPrice());
-				itemList.add(item);
-				System.out.println("장비를 길드 창고에 비치했습니다.");
-			}
-		}else {
-			System.out.println("창고 공간이 부족합니다.");
-			add = false;
-		}
-		
-		return add;
+	public void addItem(Item item) {
+		itemList.add(item);
 	}
 	
-	public boolean sellItem(int idx) {
-		boolean sell = true;
-		
-		if(idx<0 || idx>=itemList.size()) {
-			sell = false;
-			System.out.println("판매할 상품이 없습니다.");
-		}else {
-			int money = (int)(itemList.get(idx).getPrice()/3);
-			System.out.print(money + "길드 머니에 판매하시겠습니까? [1:y]");
-			int sel = Game.ran.nextInt();
-			if(sel==1) {
-				guild.setMoney(guild.getMoney() + money);
-				itemList.remove(idx);
-			}else {
-				sell = false;
+	public int delItem(int idx) {
+		int money = 0;
+		if(idx>=0 && idx<itemList.size()) {
+			money = (int) (itemList.get(idx).getPrice()/3);
+			itemList.remove(idx);
+		}
+		return money;
+	}
+	
+	public int delItem(Item item) {
+		int money = 0;
+		for(int i=0;i<itemList.size();i++) {
+			Item temp = itemList.get(i);
+			if(temp.equals(item)) {
+				money = (int) (temp.getPrice()/3);
+				itemList.remove(i);
+				break;
 			}
 		}
-		
-		return sell;
+		return money;
 	}
 	
 	public void printItemAll() {
 		if(itemList!=null && itemList.size()>0) {
 			for(int i=0;i<itemList.size();i++) {
 				Item item = itemList.get(i);
-				System.out.printf("[%d 번] ");
+				System.out.printf("[%d 번] ", i+1);
 				item.getItemInfo();
 			}
 		}else {

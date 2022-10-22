@@ -3,8 +3,10 @@ package hero;
 import item.Item;
 import unit.Unit;
 
-public class Hero extends Unit{
 
+public class Hero extends Unit{
+	
+	private String job;
 	private int level;
 	private int maxExp;
 	private int exp;
@@ -13,21 +15,37 @@ public class Hero extends Unit{
 	private Item armor;
 	private Item ring;
 	
-	public Hero(String name, int hp, int att, int def) {
+	public Hero(String name, String job, int hp, int att, int def) {
 		super(name, hp, att, def);
+		this.job = job;
+		this.maxExp = 100;
+		weapon = null;
+		armor = null;
+		ring = null;
 	}
 	
 	public void getInfo() {
 		System.out.println("=====================================");
-		System.out.println("[이름 : " + NAME + "]");
+		System.out.print("[이름 : " + NAME + "]");
+		System.out.println("[직업 : " + job + "]");
 		System.out.print(" [레벨 : " + level + "]");
 		System.out.print(" [경험치 : " + exp + "/" + maxExp + "]");
 		System.out.print(" [체력 : " + getHp());
 		System.out.println(" / " + getHp() + "]");
 		System.out.print("[공격력 : " + getAtt() + "]");
 		System.out.println(" [방어력 : " + getDef() + "]");
+		if(weapon!=null)
+			System.out.println(" [무기 : " + weapon.getName() + "]");
+		if(armor!=null)
+			System.out.println(" [무기 : " + armor.getName() + "]");
+		if(ring!=null)
+			System.out.println(" [무기 : " + ring.getName() + "]");
 	}
-
+	
+	public void setStatus() {}
+	
+	public void equitedItem(Item item) {}
+	
 	public int getLevel() {
 		return level;
 	}
@@ -76,6 +94,8 @@ public class Hero extends Unit{
 		this.ring = ring;
 	}
 	
-	
+	public String getJob() {
+		return job;
+	}
 }
 

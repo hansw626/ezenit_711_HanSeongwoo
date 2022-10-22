@@ -6,6 +6,7 @@ import java.util.Scanner;
 import guild.Guild;
 import inventory.Inventory;
 import shop.Shop;
+import utill.FileManager;
 
 public class Game {
 
@@ -14,6 +15,7 @@ public class Game {
 	private Guild guild = Guild.getInstance();
 	private Inventory inven = Inventory.getInstance();
 	private Shop shop = Shop.getInstance();
+	private FileManager fm = new FileManager();	
 	
 	public void run() {
 		while(true) {
@@ -31,7 +33,17 @@ public class Game {
 					}else if(sel==3) {
 						guild.printHeroList();
 					}else if(sel==4) {
-						inven.printItemAll();
+						while(true) {
+							System.out.println("============ 창고 메뉴 ============");
+							inven.printItemAll();
+							System.out.print("사용할 아이템 번호[돌아가기 : 0] : ");
+							int itemIdx = scan.nextInt();
+							
+							if(itemIdx==0)
+								break;
+							
+							guild.equitedItem(itemIdx-1);
+						}
 					}else if(sel==5) {
 						
 					}else if(sel==0) {
@@ -43,17 +55,33 @@ public class Game {
 					printShopMenu();
 					sel = scan.nextInt();
 					if(sel==1) {
-						shop.printBuyMenu();
+						while(true) {
+							shop.printBuyMenu();
+							sel = Game.scan.nextInt();
+							
+							if(sel==0)
+								break;
+							
+							shop.buyItem(sel-1);
+						}
 					}else if(sel==2) {
-						shop.printSellMenu();
+						while(true) {
+							shop.printSellMenu();
+							sel = Game.scan.nextInt();
+							
+							if(sel==0)
+								break;
+							
+							shop.sellItem(sel-1);
+						}
 					}else if(sel==0) {
 						break;
 					}					
 				}
 			}else if(sel==3) {
-				
+				fm.saveData();
 			}else if(sel==4) {
-				
+				fm.loadData();
 			}else if(sel==0) {
 				System.out.println("게임을 종료합니다.");
 				break;

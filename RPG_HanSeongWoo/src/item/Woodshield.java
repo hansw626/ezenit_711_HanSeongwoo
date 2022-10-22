@@ -1,15 +1,15 @@
 package item;
 
-public class WoodCutterAx extends Item implements WarriorMark {
+public class Woodshield extends Item implements TankerMark {
 	
 	@Override
 	public void setItem() {
-		name = "나무꾼의 도끼";
-		className = "WoodCutterAx";
-		job = "전사";
+		name = "나무 방패";
+		className = "woodshield";
+		job = "탱커";
 		kind = WEAPON;
-		hp = 10;
-		att = 3;
+		def = 5;
+		att = 2;
 		equited = false;
 		level = 1;
 		price = 1000;
