@@ -52,6 +52,10 @@ public class Guild {
 		money -= 5000;
 	}
 	
+	public void addHero(Hero hero) {
+		heroList.add(hero);
+	}
+	
 	public void delHero() {
 		printHeroList();
 		System.out.print("방출할 영웅의 번호 : ");
@@ -80,6 +84,29 @@ public class Guild {
 		}else {
 			System.out.println("영웅이 존재하지 않습니다.");
 		}
+	}
+	
+	public ArrayList<Hero> getHeroParty() {
+		ArrayList<Hero> party = new ArrayList<>();
+		printHeroList();
+		System.out.println("던전에 동행할 파티를 고르세요. [최대 : 4명]");
+		
+		while(true) {
+			int idx = Game.scan.nextInt()-1;
+			if(idx == -1) {
+				break;
+			}else {
+				Hero hero = heroList.get(idx);
+				if(hero.getParty()) {
+					System.out.println("이미 파티에 참여되어있습니다.");
+				}else {
+					hero.setParty(true);
+					party.add(hero);
+				}
+			}
+		}
+		
+		return party;
 	}
 	
 	public int getMoney() {

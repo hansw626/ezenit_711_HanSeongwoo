@@ -10,12 +10,12 @@ public abstract class Item {
 	String name;
 	String className;
 	String job;
-	static int level;
-	static int kind;
-	static int hp;
-	static int att;
-	static int def;
-	static int price;
+	int level;
+	int kind;
+	int hp;
+	int att;
+	int def;
+	int price;
 	boolean equited;
 	
 	public abstract void setItem();
@@ -23,28 +23,28 @@ public abstract class Item {
 	public String getName() {
 		return name;
 	}
-	public static int getLevel() {
+	public int getLevel() {
 		return level;
 	}
-	public static int getKind() {
+	public int getKind() {
 		return kind;
 	}
-	public static int getHp() {
+	public int getHp() {
 		return hp;
 	}
-	public static int getAtt() {
+	public int getAtt() {
 		return att;
 	}
-	public static int getDef() {
+	public int getDef() {
 		return def;
 	}
-	public static int getWeapon() {
+	public int getWeapon() {
 		return WEAPON;
 	}
-	public static int getArmor() {
+	public int getArmor() {
 		return ARMOR;
 	}
-	public static int getRing() {
+	public int getRing() {
 		return RING;
 	}
 	public int getPrice() {

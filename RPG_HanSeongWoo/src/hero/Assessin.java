@@ -2,6 +2,7 @@ package hero;
 
 import game.Game;
 import inventory.Inventory;
+import item.AllMark;
 import item.AssessinMark;
 import item.Item;
 import utill.NameGernerator;
@@ -12,9 +13,10 @@ public class Assessin extends Hero {
 	
 	public Assessin() {
 		super(NameGernerator.getHeroName(),"암살자",
-				(int) Math.random()*(10)+30,	//hp
-				(int) Math.random()*(5)+8,		//att
-				(int) Math.random()*(3)+1);		//def
+				(int) Math.random()*(50)+300,	//hp
+				(int) Math.random()*(5)+80,		//att
+				(int) Math.random()*(3)+10);	//def
+		setClassName("Assessin");
 	}
 	
 	@Override
@@ -29,8 +31,8 @@ public class Assessin extends Hero {
 	
 	@Override
 	public void equitedItem(Item item) {
-		if(item instanceof AssessinMark) {
-			if(Item.getKind()==Item.WEAPON) {
+		if(item instanceof AssessinMark || item instanceof AllMark) {
+			if(item.getKind()==Item.WEAPON) {
 				if(getWeapon()==null){
 					setWeapon(item);
 					inven.delItem(item);
@@ -45,7 +47,7 @@ public class Assessin extends Hero {
 						inven.delItem(item);
 					}
 				}
-			}else if(Item.getKind()==Item.ARMOR) {
+			}else if(item.getKind()==Item.ARMOR) {
 				if(getArmor()==null){
 					setArmor(item);
 					inven.delItem(item);
@@ -59,7 +61,7 @@ public class Assessin extends Hero {
 						setArmor(item);
 					}
 				}
-			}else if(Item.getKind()==Item.RING) {
+			}else if(item.getKind()==Item.RING) {
 				if(getRing()==null){
 					setRing(item);
 					inven.delItem(item);
@@ -79,6 +81,7 @@ public class Assessin extends Hero {
 		}
 	}
 	
+	@Override
 	public void levelUp() {
 		setMaxExp((int)(getMaxExp()*1.5));
 		setLevel(getLevel()+1);

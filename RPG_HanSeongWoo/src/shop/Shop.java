@@ -15,17 +15,23 @@ public class Shop {
 	private ArrayList<Item> itemList = new ArrayList<>();
 	Guild guild = Guild.getInstance();
 	Inventory inven = Inventory.getInstance();
+	private String[] items = {"WoodCutterAx", "CutterKnife", "Woodshield", "ChainArmor", "StoneRing"};
 	
 	private Shop() {
-		Item item = new WoodCutterAx();
-		item.setItem();
-		itemList.add(item);
-		item = new CutterKnife();
-		item.setItem();
-		itemList.add(item);
-		item = new Woodshield();
-		item.setItem();
-		itemList.add(item);
+		for(int i=0;i<items.length;i++) {
+			Class<?> clazz;
+			try {
+				clazz = Class.forName("item." + items[i]);
+				Object obj = clazz.newInstance();
+				if(obj instanceof Item) {
+					((Item) obj).setItem();
+					itemList.add((Item) obj);
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	private static Shop instance = new Shop();
@@ -42,7 +48,7 @@ public class Shop {
 				System.out.printf("[%d 번] ", i+1);
 				item.getItemInfo();
 				System.out.println("[가격 : " + item.getPrice() + "]");
-				System.out.println("[길드 머니 : " + guild.getMoney());
+				System.out.println("[길드 머니 : " + guild.getMoney() + "]");
 			}
 			System.out.print("구매할 아이템[돌아가기 : 0] : ");
 		}

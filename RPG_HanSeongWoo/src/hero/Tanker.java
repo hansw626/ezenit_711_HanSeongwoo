@@ -2,6 +2,7 @@ package hero;
 
 import game.Game;
 import inventory.Inventory;
+import item.AllMark;
 import item.Item;
 import utill.NameGernerator;
 import item.TankerMark;
@@ -12,9 +13,10 @@ public class Tanker extends Hero {
 	
 	public Tanker() {
 		super(NameGernerator.getHeroName(),"탱커", 
-				(int) Math.random()*(15)+50,	//hp
-				(int) Math.random()*(3)+2,		//att
-				(int) Math.random()*(3)+6);		//def
+				(int) Math.random()*(150)+500,	//hp
+				(int) Math.random()*(10)+20,		//att
+				(int) Math.random()*(10)+30);		//def
+		setClassName("Tanker");
 	}
 	
 	@Override
@@ -29,8 +31,8 @@ public class Tanker extends Hero {
 	
 	@Override
 	public void equitedItem(Item item) {
-		if(item instanceof TankerMark) {
-			if(Item.getKind()==Item.WEAPON) {
+		if(item instanceof TankerMark || item instanceof AllMark) {		
+			if(item.getKind()==Item.WEAPON) {
 				if(getWeapon()==null){
 					setWeapon(item);
 					inven.delItem(item);
@@ -45,7 +47,8 @@ public class Tanker extends Hero {
 						inven.delItem(item);
 					}
 				}
-			}else if(Item.getKind()==Item.ARMOR) {
+			}
+			if(item.getKind()==Item.ARMOR) {
 				if(getArmor()==null){
 					setArmor(item);
 					inven.delItem(item);
@@ -59,7 +62,8 @@ public class Tanker extends Hero {
 						setArmor(item);
 					}
 				}
-			}else if(Item.getKind()==Item.RING) {
+			}
+			if(item.getKind()==Item.RING) {
 				if(getRing()==null){
 					setRing(item);
 					inven.delItem(item);
@@ -79,6 +83,7 @@ public class Tanker extends Hero {
 		}
 	}
 	
+	@Override
 	public void levelUp() {
 		setMaxExp((int)(getMaxExp()*1.5));
 		setLevel(getLevel()+1);

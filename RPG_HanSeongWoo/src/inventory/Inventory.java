@@ -2,7 +2,6 @@ package inventory;
 
 import java.util.ArrayList;
 
-import game.Game;
 import guild.Guild;
 import item.Item;
 

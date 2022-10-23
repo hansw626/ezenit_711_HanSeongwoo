@@ -2,15 +2,15 @@ package unit;
 
 public class Unit {
 
-	public final String NAME;
-	
+	public String name;	
 	private int maxHp;
 	private int hp;
 	private int att;
 	private int def;
+	private int level;
 	
 	public Unit(String name, int hp, int att, int def) {
-		this.NAME = name;
+		this.name = name;
 		this.maxHp = hp;
 		this.hp = hp;
 		this.att = att;
@@ -49,9 +49,19 @@ public class Unit {
 		this.def = def;
 	}
 
-	public String getNAME() {
-		return NAME;
+	public String getName() {
+		return name;
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
 	
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
 }

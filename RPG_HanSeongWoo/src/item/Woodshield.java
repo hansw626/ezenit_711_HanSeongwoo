@@ -8,6 +8,7 @@ public class Woodshield extends Item implements TankerMark {
 		className = "woodshield";
 		job = "탱커";
 		kind = WEAPON;
+		hp = 5;
 		def = 5;
 		att = 2;
 		equited = false;
@@ -22,6 +23,7 @@ public class Woodshield extends Item implements TankerMark {
 		System.out.print(" | 직업 : " + job + "]");
 		System.out.print("[레벨 : " + level);
 		System.out.print(" | 체력 : +" + hp);
-		System.out.println(" | 공격력 : +" + att + "]");
+		System.out.println(" | 공격력 : +" + att);
+		System.out.println(" | 공격력 : +" + def + "]");
 	}
 }

@@ -1,9 +1,11 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 import guild.Guild;
+import hero.Hero;
 import inventory.Inventory;
 import shop.Shop;
 import utill.FileManager;
@@ -16,6 +18,7 @@ public class Game {
 	private Inventory inven = Inventory.getInstance();
 	private Shop shop = Shop.getInstance();
 	private FileManager fm = new FileManager();	
+	private Fight fight = new Fight();
 	
 	public void run() {
 		while(true) {
@@ -35,6 +38,7 @@ public class Game {
 					}else if(sel==4) {
 						while(true) {
 							System.out.println("============ 창고 메뉴 ============");
+							System.out.printf("[길드머니 : %d]\n", guild.getMoney());
 							inven.printItemAll();
 							System.out.print("사용할 아이템 번호[돌아가기 : 0] : ");
 							int itemIdx = scan.nextInt();
@@ -45,7 +49,8 @@ public class Game {
 							guild.equitedItem(itemIdx-1);
 						}
 					}else if(sel==5) {
-						
+						ArrayList<Hero> heroParty = guild.getHeroParty();
+						fight.inFight(heroParty);
 					}else if(sel==0) {
 						break;
 					}					

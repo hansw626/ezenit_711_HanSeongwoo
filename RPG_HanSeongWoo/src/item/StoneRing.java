@@ -1,15 +1,15 @@
 package item;
 
-public class CutterKnife extends Item implements AssessinMark {
+public class StoneRing extends Item implements AllMark {
 	
 	@Override
 	public void setItem() {
-		name = "커터칼";
-		className = "CutterKnife";
-		job = "암살자";
-		kind = WEAPON;
-		hp = 0;
-		att = 10;
+		name = "돌반지";
+		className = "StoneRing";
+		job = "모두";
+		kind = RING;
+		hp = 15;
+		att = 3;
 		def = 0;
 		equited = false;
 		level = 1;

@@ -1,16 +1,16 @@
 package item;
 
-public class CutterKnife extends Item implements AssessinMark {
+public class ChainArmor extends Item implements AllMark{
 	
 	@Override
 	public void setItem() {
-		name = "커터칼";
-		className = "CutterKnife";
-		job = "암살자";
-		kind = WEAPON;
-		hp = 0;
-		att = 10;
-		def = 0;
+		name = "사슬갑옷";
+		className = "ChainArmor";
+		job = "모두";
+		kind = ARMOR;
+		hp = 10;
+		att = 0;
+		def = 8;
 		equited = false;
 		level = 1;
 		price = 1000;
