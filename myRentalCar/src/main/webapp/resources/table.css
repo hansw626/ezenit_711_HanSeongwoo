@@ -1,0 +1,9 @@
+@charset "UTF-8";
+ *{margin:0; padding: 0;}
+ h1{text-align: center; margin-top:10%; }
+ .table-container{display: flex; flex-direction: column; 
+ 	width:fit-content; margin:10px auto auto auto; text-align: center;}
+ table{border-collapse: collapse; border:solid 1px lightblue; width:100%;}
+ th,td,button {padding:5px;}
+ th{background-color:#eeeeff;}
+ button {cursor: pointer; width:100%; background-color: lightblue; border:none;}
