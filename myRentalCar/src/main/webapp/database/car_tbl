@@ -1,0 +1,28 @@
+create table car_tbl(
+`code` varchar(10) primary key,
+barnd varchar(100) not null,
+kind varchar(20) not null,
+model varchar(100) not null,
+yearly int not null,
+fuel varchar(20) not null,
+price int not null,
+cost int not null,
+img varchar(4000) not null,
+regDate timestamp not null
+);
+
+insert into car_tbl values('12가 1234', '현대 자동차', '하이브리드', '아반떼 Hybrid',2017,'가솔린,전기',45000, 1000, 'https://www.hyundai.com/contents/repn-car/side-45/main-avante-hybrid-22my-45side.png','2019-02-01');
+insert into car_tbl values('12가 1235', '현대 자동차', '하이브리드', '쏘나타',2019,'가솔린,LPG',43000, 1000, 'https://www.hyundai.com/contents/repn-car/side-45/main-sonata-23my-45side.png','2019-09-01');
+insert into car_tbl values('12가 1236', '기아 자동차', '디젤', '스포티지',2019,'가솔린',51000, 1000, 'https://www.kia.com/content/dam/kwp/kr/ko/vehicles/represent/krnq024/sportage_nqjj51aa3_a_swp.png','2019-11-01');insert into car_tbl values('12가 1246', '현대 자동차', '하이브리드', '아반떼 Hybrid',2017,'가솔린,전기',45000, 1000, 'https://www.hyundai.com/contents/repn-car/side-45/main-avante-hybrid-22my-45side.png','2019-02-01');
+insert into car_tbl values('12가 1237', '현대 자동차', '하이브리드', '쏘나타',2019,'가솔린,LPG',43000, 1000, 'https://www.hyundai.com/contents/repn-car/side-45/main-sonata-23my-45side.png','2019-09-01');
+insert into car_tbl values('12가 1238', '기아 자동차', '디젤', '스포티지',2019,'가솔린',51000, 1000, 'https://www.kia.com/content/dam/kwp/kr/ko/vehicles/represent/krnq024/sportage_nqjj51aa3_a_swp.png','2019-11-01');insert into car_tbl values('12가 1246', '현대 자동차', '하이브리드', '아반떼 Hybrid',2017,'가솔린,전기',45000, 1000, 'https://www.hyundai.com/contents/repn-car/side-45/main-avante-hybrid-22my-45side.png','2019-02-01');
+insert into car_tbl values('12가 1239', '현대 자동차', '하이브리드', '쏘나타',2019,'가솔린,LPG',43000, 1000, 'https://www.hyundai.com/contents/repn-car/side-45/main-sonata-23my-45side.png','2019-09-01');
+insert into car_tbl values('12가 1240', '기아 자동차', '디젤', '스포티지',2019,'가솔린',51000, 1000, 'https://www.kia.com/content/dam/kwp/kr/ko/vehicles/represent/krnq024/sportage_nqjj51aa3_a_swp.png','2019-11-01');insert into car_tbl values('12가 1246', '현대 자동차', '하이브리드', '아반떼 Hybrid',2017,'가솔린,전기',45000, 1000, 'https://www.hyundai.com/contents/repn-car/side-45/main-avante-hybrid-22my-45side.png','2019-02-01');
+insert into car_tbl values('12가 1241', '현대 자동차', '하이브리드', '쏘나타',2019,'가솔린,LPG',43000, 1000, 'https://www.hyundai.com/contents/repn-car/side-45/main-sonata-23my-45side.png','2019-09-01');
+insert into car_tbl values('12가 1242', '기아 자동차', '디젤', '스포티지',2019,'가솔린',51000, 1000, 'https://www.kia.com/content/dam/kwp/kr/ko/vehicles/represent/krnq024/sportage_nqjj51aa3_a_swp.png','2019-11-01');insert into car_tbl values('12가 1246', '현대 자동차', '하이브리드', '아반떼 Hybrid',2017,'가솔린,전기',45000, 1000, 'https://www.hyundai.com/contents/repn-car/side-45/main-avante-hybrid-22my-45side.png','2019-02-01');
+insert into car_tbl values('12가 1243', '현대 자동차', '하이브리드', '쏘나타',2019,'가솔린,LPG',43000, 1000, 'https://www.hyundai.com/contents/repn-car/side-45/main-sonata-23my-45side.png','2019-09-01');
+insert into car_tbl values('12가 1244', '기아 자동차', '디젤', '스포티지',2019,'가솔린',51000, 1000, 'https://www.kia.com/content/dam/kwp/kr/ko/vehicles/represent/krnq024/sportage_nqjj51aa3_a_swp.png','2019-11-01');insert into car_tbl values('12가 1246', '현대 자동차', '하이브리드', '아반떼 Hybrid',2017,'가솔린,전기',45000, 1000, 'https://www.hyundai.com/contents/repn-car/side-45/main-avante-hybrid-22my-45side.png','2019-02-01');
+insert into car_tbl values('12가 1245', '현대 자동차', '하이브리드', '쏘나타',2019,'가솔린,LPG',43000, 1000, 'https://www.hyundai.com/contents/repn-car/side-45/main-sonata-23my-45side.png','2019-09-01');
+insert into car_tbl values('12가 1246', '기아 자동차', '디젤', '스포티지',2019,'가솔린',51000, 1000, 'https://www.kia.com/content/dam/kwp/kr/ko/vehicles/represent/krnq024/sportage_nqjj51aa3_a_swp.png','2019-11-01');insert into car_tbl values('12가 1246', '현대 자동차', '하이브리드', '아반떼 Hybrid',2017,'가솔린,전기',45000, 1000, 'https://www.hyundai.com/contents/repn-car/side-45/main-avante-hybrid-22my-45side.png','2019-02-01');
+insert into car_tbl values('12가 1247', '현대 자동차', '하이브리드', '쏘나타',2019,'가솔린,LPG',43000, 1000, 'https://www.hyundai.com/contents/repn-car/side-45/main-sonata-23my-45side.png','2019-09-01');
+insert into car_tbl values('12가 1248', '기아 자동차', '디젤', '스포티지',2019,'가솔린',51000, 1000, 'https://www.kia.com/content/dam/kwp/kr/ko/vehicles/represent/krnq024/sportage_nqjj51aa3_a_swp.png','2019-11-01');

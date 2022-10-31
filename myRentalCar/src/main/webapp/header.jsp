@@ -11,7 +11,7 @@
     <title>EZEN RENTAL CAR</title>
 </head>
 <body>
-
+<%session.setAttribute("admin", "nomal"); %>
     <header>
         <h1>EZEN RENTAL CAR</h1>
         <div class="login_box">

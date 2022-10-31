@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@100&family=Single+Day&display=swap');
 
 * {margin: 0;padding: 0;}
-.container {height: 150vh; display: grid; font-family: 'IBM Plex Sans KR', sans-serif;
+.container {height: 150vh; display: grid; font-family: 'IBM Plex Sans KR', sans-serif; font-weight:600;
 	grid-template-columns: 100px 1fr 100px; grid-template-rows: 120px 40px 100px 1fr 150px;
 	grid-template-areas: "header header header" "nav nav nav"
 		"aside aside aside" "section section section" "footer footer  footer";}

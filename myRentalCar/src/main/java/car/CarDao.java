@@ -22,7 +22,7 @@ public class CarDao {
 	
 	// Constructor
 	private CarDao() {
-		this.url = "jdbc:mysql://localhost:3306/my_retal_car";
+		this.url = "jdbc:mysql://localhost:3306/my_rental_car";
 		this.user = "root";
 		this.password = "root";
 		
@@ -83,7 +83,7 @@ public class CarDao {
 	// 2-2 Read One
 	public CarDto getCarByCode(String code) {
 		CarDto car = null;
-		String sql = "SELECT * FROM car_tbl WHERE code=?";
+		String sql = "SELECT * FROM car_tbl WHERE `code`=?";
 		
 		try {
 			this.conn = DBManager.getConnection(this.url, this.user, this.password);

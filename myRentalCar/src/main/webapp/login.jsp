@@ -23,7 +23,7 @@
 						</div>
 						<div>
 							<i class="fa-solid fa-lock"></i> 
-							<input type="text" name="password" placeholder="Password" />
+							<input type="password" name="password" placeholder="Password" />
 						</div>
 						<input type="submit" class="login_btn" value="로그인" /> 
 						<input type="button" class="join_btn" value="회원가입"

@@ -1,8 +1,6 @@
-package user;
+package notice;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,17 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import user.UserDao;
+
 /**
- * Servlet implementation class loginAction
+ * Servlet implementation class boardWriteAction
  */
-@WebServlet("/loginAction")
-public class loginAction extends HttpServlet {
+//@WebServlet("/noticeWriteAction")
+public class noticeWriteAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public loginAction() {
+    public noticeWriteAction() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,37 +29,27 @@ public class loginAction extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<String> admins = new ArrayList<>();
-		admins.add("apple");
+		// TODO Auto-generated method stub
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.setCharacterEncoding("utf-8");
+		
 		HttpSession session = request.getSession();
-		request.setCharacterEncoding("UTF-8");
-		UserDao dao = UserDao.getInstance();
+		NoticeDao dao = NoticeDao.getInstance();
 		
-		String id = request.getParameter("id");
-		String pw = request.getParameter("password");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 		
-		UserDto user = dao.getUserById(id);
-		if(user!=null && pw.equals(user.getPw())) {
-			session.setAttribute("log", id);
-			System.out.println("로그인 성공");
-			boolean admin = false;
-			for(String log : admins) {
-				if(log.equals(id)) {
-					admin = true;
-					break;
-				}
-			}
-			if(admin==true) {
-				session.setAttribute("grant", "admin");
-			}else {
-				session.setAttribute("grant", "nomal");
-			}
-			response.sendRedirect("index.jsp");				
+		if(title != null && content != null) {
+			String id = (String)session.getAttribute("log");
+			
+			NoticeDto notice = new NoticeDto(id, title, content);
+			dao.createNotice(notice);
+			response.sendRedirect("notice");
 		}else {
-			session.setAttribute("log", null);
-			System.out.println("로그인 실패");
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("noticeWrite");
 		}
+		
+//		request.getRequestDispatcher("index").forward(request, response);
 	}
 
 	/**
@@ -67,6 +57,8 @@ public class loginAction extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 		doGet(request, response);
 	}
 

@@ -1,0 +1,11 @@
+create table user_tbl(
+id varchar(20) primary key,
+pw varchar(20) not null,
+`name` varchar(20) not null,
+license varchar(15) not null,
+phone varchar(20) not null,
+address varchar(100) not null,
+regDate timestamp not null
+);
+
+INSERT INTO user_tbl VALUE('apple','1234','김사과','11-11-12345-11','010-1234-5678','서울 강남구 테해란로', '2022-10-31');

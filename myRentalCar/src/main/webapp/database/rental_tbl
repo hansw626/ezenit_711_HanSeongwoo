@@ -1,0 +1,14 @@
+create table rental_tbl(
+`no` int primary key,
+userId varchar(20) not null,
+carCode varchar(10) not null,
+sDate timestamp not null,
+eDate timestamp not null,
+place varchar(100) not null,
+reason varchar(100) not null,
+price int not null,
+cost int not null,
+mileage int,
+foreign key(userId) references user_tbl(id),
+foreign key(carCode) references car_tbl(`code`)
+);

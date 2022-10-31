@@ -1,4 +1,4 @@
-package board;
+package notice;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import util.DBManager;
 
-public class BoardDao {
+public class NoticeDao {
 
 	// member
 	private String url;
@@ -21,7 +21,7 @@ public class BoardDao {
 	private ResultSet rs;
 	
 	// 싱글톤 패턴
-	private BoardDao() {
+	private NoticeDao() {
 		this.url = "jdbc:mysql://localhost:3306/my_rental_car";
 		this.user = "root";
 		this.password = "root";
@@ -30,16 +30,16 @@ public class BoardDao {
 		this.pstmt = null;
 		this.rs = null;
 	}
-	private static BoardDao instance = new BoardDao();
-	public static BoardDao getInstance() {
+	private static NoticeDao instance = new NoticeDao();
+	public static NoticeDao getInstance() {
 		return instance;
 	}
 	
 	//CRUD
 	
 	// 1. Create
-	public void createBoard(BoardDto board) {
-		String sql = "INSERT INTO board VALUES(?,?,?,?,?,?,?)";
+	public void createNotice(NoticeDto board) {
+		String sql = "INSERT INTO notice VALUES(?,?,?,?,?,?,?)";
 		int no = noGenerator();	// 마지막 no + 1;
 		try {
 			// no/title/content/user/password/regDate/modDate/viewCnt
@@ -67,7 +67,7 @@ public class BoardDao {
 	}
 	
 	public int noGenerator() {
-		String sql = "SELECT MAX(no) FROM board";
+		String sql = "SELECT MAX(no) FROM notice";
 		int no = 0;
 		
 		try {
@@ -95,9 +95,9 @@ public class BoardDao {
 	// 2. Read
 	
 	// 2-1 Read All
-	public ArrayList<BoardDto> getBoardAll(){
-		ArrayList<BoardDto> list = new ArrayList<BoardDto>();
-		String sql = "SELECT * FROM board ORDER BY `no` DESC";
+	public ArrayList<NoticeDto> getNoticeAll(){
+		ArrayList<NoticeDto> list = new ArrayList<NoticeDto>();
+		String sql = "SELECT * FROM notice ORDER BY `no` DESC";
 		
 		try {
 			this.conn = DBManager.getConnection(url, user, password);
@@ -113,7 +113,7 @@ public class BoardDao {
 				Timestamp modDate = this.rs.getTimestamp(6);
 				int viewCnt = this.rs.getInt(7);
 				
-				BoardDto board = new BoardDto(no,title, content,user, password, regDate, modDate, viewCnt);
+				NoticeDto board = new NoticeDto(no,title, content,user, password, regDate, modDate, viewCnt);
 				list.add(board);
 			}
 		} catch (Exception e) {
@@ -132,9 +132,9 @@ public class BoardDao {
 	}
 	
 	// 2-2 Read One
-	public BoardDto getBoardByNo(int no) {
-		BoardDto board = null;
-		String sql = "SELECT * FROM board WHERE `no`=?";
+	public NoticeDto getNoticeByNo(int no) {
+		NoticeDto board = null;
+		String sql = "SELECT * FROM notice WHERE `no`=?";
 		
 		try {
 			this.conn = DBManager.getConnection(url, user, password);
@@ -151,7 +151,7 @@ public class BoardDao {
 				Timestamp modDate = this.rs.getTimestamp(7);
 				int viewCnt = this.rs.getInt(8);
 				
-				board = new BoardDto(no,title, content,user, password, regDate, modDate, viewCnt);
+				board = new NoticeDto(no,title, content,user, password, regDate, modDate, viewCnt);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -168,8 +168,8 @@ public class BoardDao {
 		return board;
 	}
 	// 3. Update
-	public void updateBoard(BoardDto board) {
-		String sql="UPDATE board SET title=?, content=?, modDate=? WHERE no=?";
+	public void updateNotice(NoticeDto board) {
+		String sql="UPDATE notice SET title=?, content=?, modDate=? WHERE no=?";
 		int no = board.getNo();
 		String title = board.getTitle();
 		String content = board.getContent();
@@ -196,8 +196,8 @@ public class BoardDao {
 	}
 	
 	public void countView(int no) {
-		String sql = "UPDATE board SET viewCnt=? WHERE `no`=?";
-		BoardDto board = getBoardByNo(no);
+		String sql = "UPDATE notice SET viewCnt=? WHERE `no`=?";
+		NoticeDto board = getNoticeByNo(no);
 		
 		try {
 			this.conn = DBManager.getConnection(this.url, this.user, this.password);
@@ -217,8 +217,8 @@ public class BoardDao {
 		}
 	}
 	// 4. Delete
-	public void deleteBoard(int no) {
-		String sql="DELETE FROM board WHERE no=?";
+	public void deleteNotice(int no) {
+		String sql="DELETE FROM notice WHERE no=?";
 		
 		try {
 			this.conn = DBManager.getConnection(this.url, this.user, this.password);

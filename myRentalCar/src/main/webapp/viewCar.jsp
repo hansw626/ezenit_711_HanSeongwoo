@@ -18,6 +18,8 @@ request.setCharacterEncoding("UTF-8");
 String code = request.getParameter("code");
 CarDao dao = CarDao.getInstance();
 CarDto car = dao.getCarByCode(code);
+System.out.println("code");
+System.out.println(code);
 %>
     <div class="container">
         <jsp:include page="header.jsp" />
@@ -80,7 +82,7 @@ CarDto car = dao.getCarByCode(code);
             		</div>
             		<div class="input_box">
             			<p>신청사유</p>
-            			<input type="text" name="reason" placeholder="랜트 종료일" />
+            			<input type="text" name="reason" placeholder="ex) 제주도 여행" />
             		</div>
             		<div class="input_box">
             			<input type="submit" name="end_date" value="신청하기" />

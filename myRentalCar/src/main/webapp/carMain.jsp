@@ -28,7 +28,7 @@ ArrayList<CarDto> carList = dao.getCarList();
             		<p class="kind"><%=car.getKind()%></p>
             		<p class="brand"><%=car.getBrand()%></p>
             	</div>
-            	<div class="model"><a name="code" href="move?page=viewcar&code='<%=car.getCode()%>'"><%=car.getModel()%></a></div>
+            	<div class="model"><a name="code" href="move?page=viewcar&code=<%=car.getCode()%>"><%=car.getModel()%></a></div>
             	
             </article>
             <%}%>

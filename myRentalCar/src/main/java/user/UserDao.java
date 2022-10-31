@@ -22,7 +22,7 @@ public class UserDao {
 	
 	// Constructor
 	private UserDao() {
-		this.url = "jdbc:mysql://localhost:3306/my_retal_car";
+		this.url = "jdbc:mysql://localhost:3306/my_rental_car";
 		this.user = "root";
 		this.password = "root";
 		

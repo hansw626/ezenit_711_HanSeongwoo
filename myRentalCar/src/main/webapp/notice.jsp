@@ -1,5 +1,8 @@
-<%@page import="java.util.ArrayList"%>
+<%@page import="notice.NoticeDto"%>
+<%@page import="notice.NoticeDao"%>
+<%@page import="com.mysql.cj.protocol.x.Notice"%>
 <%@page import="board.BoardDto"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="board.BoardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -14,8 +17,8 @@
 </head>
 <body>
 <%
-BoardDao dao = BoardDao.getInstance();
-ArrayList<BoardDto> boardList = dao.getBoardAll();
+NoticeDao dao = NoticeDao.getInstance();
+ArrayList<NoticeDto> noticeList = dao.getNoticeAll();
 %>
     <div class="container">
         <jsp:include page="header.jsp" />
@@ -31,20 +34,20 @@ ArrayList<BoardDto> boardList = dao.getBoardAll();
             		</tr>
             	</thead>
             	<tbody>
-            		<%for(BoardDto board : boardList){ %>
+            		<%for(NoticeDto notice : noticeList){ %>
            			<tr>
-           				<td><%=board.getUser()%></td>
-           				<td><%=board.getRegDate() %></td>
-           				<td><%=board.getTitle()%></td>
-           				<td><%=board.getViewCnt() %></td>
+           				<td><%=notice.getUser()%></td>
+           				<td><%=notice.getRegDate() %></td>
+           				<td><%=notice.getTitle()%></td>
+           				<td><%=notice.getViewCnt() %></td>
            			</tr>
             		<%} %>
             	</tbody>
             </table>
-            <form>
-            
-            </form>
-             <button onclick="location.href='move?page=boardWrite'">글쓰기</button>
+            <% String grant = (String)session.getAttribute("grant");
+            if(grant.equals("admin")){ %>
+             <button onclick="location.href='move?page=noticeWrite'">글쓰기</button>
+            <%} %>
         </section>
         <jsp:include page="footer.jsp" />
     </div>

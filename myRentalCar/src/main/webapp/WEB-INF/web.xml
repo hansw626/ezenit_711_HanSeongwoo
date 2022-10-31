@@ -65,6 +65,23 @@
     <url-pattern>/viewcar</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>notice</servlet-name>
+    <jsp-file>/notice.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>notice</servlet-name>
+    <url-pattern>/notice</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>noticeWrite</servlet-name>
+    <jsp-file>/noticeWrite.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>noticeWrite</servlet-name>
+    <url-pattern>/noticeWrite</url-pattern>
+  </servlet-mapping>
   <!-- Action -->
   <servlet>
     <servlet-name>join</servlet-name>
@@ -128,5 +145,32 @@
   <servlet-mapping>
     <servlet-name>boardWriter</servlet-name>
     <url-pattern>/boardWriter</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>boardDelete</servlet-name>
+    <servlet-class>board.boardDeleteAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>boardDelete</servlet-name>
+    <url-pattern>/boardDelete</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>noticeWriter</servlet-name>
+    <servlet-class>notice.noticeWriteAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>noticeWriter</servlet-name>
+    <url-pattern>/noticeWriter</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>noticeDelete</servlet-name>
+    <servlet-class>notice.noticeDeleteAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>noticeDelete</servlet-name>
+    <url-pattern>/noticeDelete</url-pattern>
   </servlet-mapping>
 </web-app>

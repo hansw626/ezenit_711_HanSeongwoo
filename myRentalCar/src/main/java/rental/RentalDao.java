@@ -25,7 +25,7 @@ public class RentalDao {
 	
 	// Constructor
 	private RentalDao() {
-		this.url = "jdbc:mysql://localhost:3306/my_retal_car";
+		this.url = "jdbc:mysql://localhost:3306/my_rental_car";
 		this.user = "root";
 		this.password = "root";
 		
@@ -46,7 +46,7 @@ public class RentalDao {
 	public void createRentalInfo(RentalVo rental) {
 		String sql = "INSERT INTO rental_tbl VALUES(?,?,?,?,?,?,?,?,?,?)";
 		
-		int no = getNo();
+		int no = getNo() + 1;
 		String userId = rental.getUserId();
 		String carCode = rental.getCarCode();
 		Timestamp sDate = rental.getsDate();
@@ -56,7 +56,8 @@ public class RentalDao {
 		int price = rental.getPrice();
 		int cost = rental.getCost();
 		int mileage = 0;
-		
+		System.out.printf("%d,%s,%s,%s,%s,%s,%s,%d,%d,%d\n\n",
+				no, userId, carCode, sDate, eDate, place, reason, price, cost, mileage);
 		try {
 			this.conn = DBManager.getConnection(this.url, this.user, this.password);
 			this.pstmt = this.conn.prepareStatement(sql);
@@ -86,7 +87,7 @@ public class RentalDao {
 	// 2. Read
 	public ArrayList<RentalVo> getUserRentalInfoAll(String id){
 		ArrayList<RentalVo> rentalInfo = new ArrayList<>();
-		String sql = "SELECT * FROM rental_tbl WHERE id=?";
+		String sql = "SELECT * FROM rental_tbl WHERE userId=?";
 		
 		try {
 			this.conn = DBManager.getConnection(this.url, this.user, this.password);

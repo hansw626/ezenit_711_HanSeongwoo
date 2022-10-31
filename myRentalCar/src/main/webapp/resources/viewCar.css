@@ -1,9 +1,9 @@
 @charset "UTF-8";
 table {margin:0 auto; width:1000px; font-weight:500;}
-img{background-color:aqua; width:300px; height:300px;}
+img{width:100%;}
 table td{padding-left:15px;}
 
-.rental{text-align:center; padding:20px 0;border:solid 1px #eaeaea; margin-top:30px;}
+.rental{text-align:center; padding:20px 0;border:solid 1px #eaeaea; margin-top:30px; min-width:1000px;}
 .rental div{display:inline-block; width:200px;}
 .rental h2{margin:25px 0 15px 0;}
 div p{font-weight:700; font-size:18px; margin-bottom:20px;}

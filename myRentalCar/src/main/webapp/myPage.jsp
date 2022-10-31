@@ -1,3 +1,5 @@
+<%@page import="car.CarDto"%>
+<%@page import="car.CarDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="rental.RentalVo"%>
 <%@page import="rental.RentalDao"%>
@@ -20,7 +22,7 @@
 	UserDao userDao = UserDao.getInstance();
 	UserDto user = userDao.getUserById(id);
 	RentalDao rentalDao = RentalDao.getInstance();
-	//ArrayList<RentalDto> rentalInfo = rentalDao.getUserRentalInfoAll(id);
+	ArrayList<RentalVo> rentalInfo = rentalDao.getUserRentalInfoAll(id);
 %>
     <div class="container">
         <jsp:include page="header.jsp" />
@@ -64,7 +66,20 @@
             			</tr>
             		</thead>
             		<tbody>
-            			
+            			<% for(RentalVo rental : rentalInfo){ 
+            				CarDao carDao = CarDao.getInstance();
+            				CarDto car = carDao.getCarByCode(rental.getCarCode());
+            				int period = rental.geteDate().getDate() - rental.getsDate().getDate();
+            			%>
+            			<tr>
+            				<td><%=rental.getsDate() %></td>
+            				<td><%=car.getModel() %></td>
+            				<td><%=rental.getReason() %></td>
+            				<td><%=rental.getPlace() %></td>
+            				<td><%=rental.getMileage() %></td>
+            				<td><%=period %></td>
+            			</tr>
+            			<%} %>
             		</tbody>
             	</table>
             </div>

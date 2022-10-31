@@ -33,12 +33,13 @@ public class rentalAction extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		RentalDao dao = RentalDao.getInstance();
 		
 		String id = (String)session.getAttribute("log");
 		String code = request.getParameter("code");
-		String place = request.getParameter("place");
+		String place = request.getParameter("area");
 		String reason = request.getParameter("reason");
 		int price = Integer.parseInt(request.getParameter("price"));
 		int cost = Integer.parseInt(request.getParameter("cost"));
@@ -57,8 +58,8 @@ public class rentalAction extends HttpServlet {
 		
 		RentalVo rental = new RentalVo(id,code,sDate,eDate,place,reason,price,cost);
 		dao.createRentalInfo(rental);
-		
-		response.sendRedirect("viewCar.jsp");
+
+		response.sendRedirect("carMain.jsp");
 	}
 
 	/**
