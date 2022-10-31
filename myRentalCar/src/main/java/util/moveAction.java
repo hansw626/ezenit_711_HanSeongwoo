@@ -34,7 +34,6 @@ public class moveAction extends HttpServlet {
 			response.sendRedirect("login");
 		}else {
 			String page = request.getParameter("page");
-			System.out.println(page);
 			request.getRequestDispatcher(page).forward(request, response);
 		}
 	}

@@ -18,8 +18,6 @@ request.setCharacterEncoding("UTF-8");
 String code = request.getParameter("code");
 CarDao dao = CarDao.getInstance();
 CarDto car = dao.getCarByCode(code);
-System.out.println("code");
-System.out.println(code);
 %>
     <div class="container">
         <jsp:include page="header.jsp" />
