@@ -113,7 +113,7 @@ public class NoticeDao {
 				Timestamp modDate = this.rs.getTimestamp(6);
 				int viewCnt = this.rs.getInt(7);
 				
-				NoticeDto board = new NoticeDto(no,title, content,user, password, regDate, modDate, viewCnt);
+				NoticeDto board = new NoticeDto(no,title, content,user, regDate, modDate, viewCnt);
 				list.add(board);
 			}
 		} catch (Exception e) {
@@ -133,7 +133,7 @@ public class NoticeDao {
 	
 	// 2-2 Read One
 	public NoticeDto getNoticeByNo(int no) {
-		NoticeDto board = null;
+		NoticeDto notice = null;
 		String sql = "SELECT * FROM notice WHERE `no`=?";
 		
 		try {
@@ -146,12 +146,11 @@ public class NoticeDao {
 				String title = this.rs.getString(2);
 				String content = this.rs.getString(3);
 				String user = this.rs.getString(4);
-				String password = this.rs.getString(5);
-				Timestamp regDate = this.rs.getTimestamp(6);
-				Timestamp modDate = this.rs.getTimestamp(7);
-				int viewCnt = this.rs.getInt(8);
+				Timestamp regDate = this.rs.getTimestamp(5);
+				Timestamp modDate = this.rs.getTimestamp(6);
+				int viewCnt = this.rs.getInt(7);
 				
-				board = new NoticeDto(no,title, content,user, password, regDate, modDate, viewCnt);
+				notice = new NoticeDto(no,title, content,user, regDate, modDate, viewCnt);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -165,7 +164,7 @@ public class NoticeDao {
 			}
 		}
 		
-		return board;
+		return notice;
 	}
 	// 3. Update
 	public void updateNotice(NoticeDto board) {

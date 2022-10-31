@@ -14,7 +14,7 @@ public class BoardDto {
 	private int viewCnt;
 	
 	// All Arguments Constructor
-	public BoardDto(int no, String title, String content, String user, String password, Timestamp reqDate,
+	public BoardDto(int no, String title, String content, String user, Timestamp reqDate,
 			Timestamp modDate, int viewCnt) {
 		super();
 		this.no = no;

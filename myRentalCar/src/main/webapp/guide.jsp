@@ -10,7 +10,7 @@
 	<div class="container">
         <jsp:include page="header.jsp" />
         <section>
-            본문
+            본 서비스는 렌트카 서비스입니다.
         </section>
         <jsp:include page="footer.jsp" />
     </div>

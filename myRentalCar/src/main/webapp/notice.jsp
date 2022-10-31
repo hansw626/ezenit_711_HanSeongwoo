@@ -38,16 +38,20 @@ ArrayList<NoticeDto> noticeList = dao.getNoticeAll();
            			<tr>
            				<td><%=notice.getUser()%></td>
            				<td><%=notice.getRegDate() %></td>
-           				<td><%=notice.getTitle()%></td>
+           				<td><a href="noticeView?no=<%=notice.getNo()%>"><%=notice.getTitle()%></a></td>
            				<td><%=notice.getViewCnt() %></td>
            			</tr>
             		<%} %>
             	</tbody>
             </table>
-            <% String grant = (String)session.getAttribute("grant");
-            if(grant.equals("admin")){ %>
-             <button onclick="location.href='move?page=noticeWrite'">글쓰기</button>
-            <%} %>
+            <% 
+            if((String)session.getAttribute("grant")!=null){
+            	String grant = (String)session.getAttribute("grant");
+	            if(grant.equals("admin")){ %>
+	             <button onclick="location.href='move?page=noticeWrite'">글쓰기</button>
+	            <%}
+	        } %>
+            
         </section>
         <jsp:include page="footer.jsp" />
     </div>

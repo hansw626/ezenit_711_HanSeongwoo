@@ -113,7 +113,7 @@ public class BoardDao {
 				Timestamp modDate = this.rs.getTimestamp(6);
 				int viewCnt = this.rs.getInt(7);
 				
-				BoardDto board = new BoardDto(no,title, content,user, password, regDate, modDate, viewCnt);
+				BoardDto board = new BoardDto(no,title, content,user, regDate, modDate, viewCnt);
 				list.add(board);
 			}
 		} catch (Exception e) {
@@ -146,12 +146,11 @@ public class BoardDao {
 				String title = this.rs.getString(2);
 				String content = this.rs.getString(3);
 				String user = this.rs.getString(4);
-				String password = this.rs.getString(5);
-				Timestamp regDate = this.rs.getTimestamp(6);
-				Timestamp modDate = this.rs.getTimestamp(7);
-				int viewCnt = this.rs.getInt(8);
+				Timestamp regDate = this.rs.getTimestamp(5);
+				Timestamp modDate = this.rs.getTimestamp(6);
+				int viewCnt = this.rs.getInt(7);
 				
-				board = new BoardDto(no,title, content,user, password, regDate, modDate, viewCnt);
+				board = new BoardDto(no,title, content,user, regDate, modDate, viewCnt);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

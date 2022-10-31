@@ -35,7 +35,7 @@ ArrayList<BoardDto> boardList = dao.getBoardAll();
            			<tr>
            				<td><%=board.getUser()%></td>
            				<td><%=board.getRegDate() %></td>
-           				<td><%=board.getTitle()%></td>
+           				<td><a href="boardView?no=<%=board.getNo()%>"><%=board.getTitle()%></a></td>
            				<td><%=board.getViewCnt() %></td>
            			</tr>
             		<%} %>

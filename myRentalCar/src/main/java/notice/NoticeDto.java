@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class NoticeDto {
 
-	// no/title/content/user/password/reqDate/modDate/viewCnt
+	// no/title/content/user/reqDate/modDate/viewCnt
 	private int no;
 	private String title;
 	private String content;
@@ -14,7 +14,7 @@ public class NoticeDto {
 	private int viewCnt;
 	
 	// All Arguments Constructor
-	public NoticeDto(int no, String title, String content, String user, String password, Timestamp reqDate,
+	public NoticeDto(int no, String title, String content, String user, Timestamp reqDate,
 			Timestamp modDate, int viewCnt) {
 		super();
 		this.no = no;

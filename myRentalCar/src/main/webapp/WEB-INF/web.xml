@@ -20,6 +20,16 @@
     <url-pattern>/index</url-pattern>
   </servlet-mapping>
   
+  
+  <servlet>
+    <servlet-name>guide</servlet-name>
+    <jsp-file>/guide.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>guide</servlet-name>
+    <url-pattern>/guide</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <servlet-name>rentalPage</servlet-name>
     <jsp-file>/carMain.jsp</jsp-file>
@@ -38,6 +48,16 @@
     <url-pattern>/board</url-pattern>
   </servlet-mapping>
   
+    
+    <servlet>
+    <servlet-name>boardView</servlet-name>
+    <jsp-file>/boardView.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>boardView</servlet-name>
+    <url-pattern>/boardView</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <servlet-name>boardWrite</servlet-name>
     <jsp-file>/boardWrite.jsp</jsp-file>
@@ -45,6 +65,15 @@
   <servlet-mapping>
     <servlet-name>boardWrite</servlet-name>
     <url-pattern>/boardWrite</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>boardUpdate</servlet-name>
+    <jsp-file>/boardUpdateForm.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>boardUpdate</servlet-name>
+    <url-pattern>/boardUpdate</url-pattern>
   </servlet-mapping>
   
   <servlet>
@@ -74,6 +103,15 @@
     <url-pattern>/notice</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+    <servlet-name>noticeView</servlet-name>
+    <jsp-file>/noticeView.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>noticeView</servlet-name>
+    <url-pattern>/noticeView</url-pattern>
+  </servlet-mapping>
+  
     <servlet>
     <servlet-name>noticeWrite</servlet-name>
     <jsp-file>/noticeWrite.jsp</jsp-file>
@@ -81,6 +119,15 @@
   <servlet-mapping>
     <servlet-name>noticeWrite</servlet-name>
     <url-pattern>/noticeWrite</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>noticeUpdate</servlet-name>
+    <jsp-file>/noticeUpdateForm.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>noticeUpdate</servlet-name>
+    <url-pattern>/noticeUpdate</url-pattern>
   </servlet-mapping>
   <!-- Action -->
   <servlet>
@@ -148,6 +195,15 @@
   </servlet-mapping>
   
   <servlet>
+    <servlet-name>boardUpdater</servlet-name>
+    <servlet-class>board.boardUpdateAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>boardUpdater</servlet-name>
+    <url-pattern>/boardUpdater</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
     <servlet-name>boardDelete</servlet-name>
     <servlet-class>board.boardDeleteAction</servlet-class>
   </servlet>
@@ -163,6 +219,15 @@
   <servlet-mapping>
     <servlet-name>noticeWriter</servlet-name>
     <url-pattern>/noticeWriter</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>noticeUpdater</servlet-name>
+    <servlet-class>notice.noticeUpdateAction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>noticeUpdater</servlet-name>
+    <url-pattern>/noticeUpdater</url-pattern>
   </servlet-mapping>
   
   <servlet>

@@ -17,8 +17,10 @@
 	NoticeDto notice = null;
 	
 	request.setCharacterEncoding("utf-8");
+	
 	if(request.getParameter("no") != null) {
 		int no = Integer.parseInt(request.getParameter("no"));
+		System.out.println(no);
 		notice = dao.getNoticeByNo(no); 
 		dao.countView(no);
 		%>
@@ -31,12 +33,17 @@
 				<form method="post" action="">
 					<input type="text" value="<%=notice.getTitle() %>" readonly>
 					<textarea rows="20" readonly><%=notice.getContent() %></textarea>
-					<input type="button" onclick="location.href='index'" value="글목록">
+					<input type="button" onclick="location.href='notice'" value="글목록">
+					<% 
+					String log = (String)session.getAttribute("log");
+					if(log!=null && log.equals(notice.getUser())){
+					%>
 					<input type="button"
-						onclick="location.href='noticeUpdateForm?no=<%=notice.getNo() %>'"
+						onclick="location.href='noticeUpdate?no=<%=notice.getNo() %>'"
 						value="글수정"> <input type="button"
 						onclick="location.href='noticeDelete?no=<%=notice.getNo() %>'"
 						value="글삭제">
+					<%} %>
 				</form>
 			</div>
 		</section>

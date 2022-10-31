@@ -34,7 +34,7 @@ public class boardDeleteAction extends HttpServlet {
 			int no = Integer.parseInt(request.getParameter("no"));
 			dao.deleteBoard(no);
 		}
-		response.sendRedirect("index");
+		response.sendRedirect("cummunity");
 	}
 
 	/**

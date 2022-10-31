@@ -23,7 +23,7 @@
 
     <h1>EZEN BOARD</h1>
     <div class="form-container">
-        <form method="post" action="boardUpdate">
+        <form method="post" action="boardUpdater">
         	<input type="hidden" name="no" value="<%=no%>">
             <input type="text" name="title" value="<%=board.getTitle() %>">
             <textarea name="content" rows="20"><%=board.getContent() %></textarea>
@@ -32,7 +32,7 @@
     </div>
 	<%}
 	else {
-		response.sendRedirect("index"); //borad 조회 실패 -> 페이지 이
+		response.sendRedirect("cummunity"); //borad 조회 실패 -> 페이지 이
 	}%>
 	
 </body>

@@ -31,12 +31,17 @@
 				<form method="post" action="">
 					<input type="text" value="<%=board.getTitle() %>" readonly>
 					<textarea rows="20" readonly><%=board.getContent() %></textarea>
-					<input type="button" onclick="location.href='index'" value="글목록">
+					<input type="button" onclick="location.href='cummunity'" value="글목록">
+					<% 
+					String log = (String)session.getAttribute("log");
+					if(log!=null && log.equals(board.getUser())){
+					%>
 					<input type="button"
-						onclick="location.href='boardUpdateForm?no=<%=board.getNo() %>'"
+						onclick="location.href='boardUpdate?no=<%=board.getNo() %>'"
 						value="글수정"> <input type="button"
 						onclick="location.href='boardDelete?no=<%=board.getNo() %>'"
 						value="글삭제">
+					<%} %>
 				</form>
 			</div>
 		</section>

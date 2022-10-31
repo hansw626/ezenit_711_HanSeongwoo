@@ -23,7 +23,7 @@
 
     <h1>EZEN BOARD</h1>
     <div class="form-container">
-        <form method="post" action="noticeUpdate">
+        <form method="post" action="noticeUpdater">
         	<input type="hidden" name="no" value="<%=no%>">
             <input type="text" name="title" value="<%=notice.getTitle() %>">
             <textarea name="content" rows="20"><%=notice.getContent() %></textarea>
